@@ -15,9 +15,11 @@ namespace BlazorHybridMessAround
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            // register the Telerik services
+            builder.Services.AddTelerikBlazor();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 

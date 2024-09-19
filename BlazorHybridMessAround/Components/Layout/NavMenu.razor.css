@@ -1,3 +1,16 @@
+.header-block{
+    display:block;
+}
+.header-text{
+    color:white;
+    float:left;
+}
+
+.logo {
+    height:80px;
+    margin:auto;
+}
+
 .navbar-toggler {
     appearance: none;
     cursor: pointer;
@@ -16,7 +29,7 @@
     }
 
 .top-row {
-    height: 3.5rem;
+    height: 140px;
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -95,7 +108,7 @@
         /* Never collapse the sidebar for wide screens */
         display: block;
         /* Allow sidebar to scroll for tall menus */
-        height: calc(100vh - 3.5rem);
+        height: calc(100vh - 140px);
         overflow-y: auto;
     }
 }
