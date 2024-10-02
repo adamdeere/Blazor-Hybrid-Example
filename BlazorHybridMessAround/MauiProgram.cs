@@ -1,5 +1,9 @@
-﻿using BlazorHybridMessAround.Services;
+﻿using BlazorHybridMessAround.Components.Views;
+using BlazorHybridMessAround.Services;
+using BlazorHybridMessAround.ViewModels;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Telerik.Maui.Controls.Compatibility;
 
 namespace BlazorHybridMessAround
 {
@@ -10,6 +14,8 @@ namespace BlazorHybridMessAround
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .UseTelerik()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -24,6 +30,9 @@ namespace BlazorHybridMessAround
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<NavigationService>();
+
+            builder.Services.AddSingleton<LoginView>();
+            builder.Services.AddSingleton<LoginViewModel>();
             return builder.Build();
         }
     }

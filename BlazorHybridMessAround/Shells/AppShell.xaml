@@ -7,6 +7,9 @@
     Shell.TabBarIsVisible="False"
     Shell.FlyoutBehavior="Flyout">
 
+    <ShellItem Route="LoginView" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginView}" />
+    </ShellItem>
 
     <FlyoutItem Title="Home"
                 Icon="dotnet_bot.png">
@@ -14,7 +17,8 @@
         <Tab Title="Home"
              x:Name="HomeTab"
              Icon="dotnet_bot.png">
-            <ShellContent ContentTemplate="{DataTemplate views:Home}" />
+            <ShellContent ContentTemplate="{DataTemplate views:HomeView}"
+                          Route="HomeView"/>
         </Tab>
         <Tab Title="Cats ">
             <ShellContent ContentTemplate="{DataTemplate views:CatsView}" />
