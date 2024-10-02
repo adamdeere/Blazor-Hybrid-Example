@@ -1,55 +1,42 @@
 ﻿@page "/"
+@using BlazorHybridMessAround.Components.Pages.Cards
+@using BlazorHybridMessAround.Models
+@using BlazorHybridMessAround.Services
+@using BlazorHybridMessAround.ViewModel
+@using BlazorHybridMessAround.ViewModels
+@using System.Collections.ObjectModel
 
-<h4>Basic Button</h4>
+@inject PwnedViewModel ListViewData;
 
-<TelerikButton OnClick="@MyClickHandler">Click me!</TelerikButton>
-@thankYouString
-
-<h4>Styled Buttons</h4>
-
-<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)">Primary Button</TelerikButton>
-
-<TelerikButton Class="red-text">Red Text Button</TelerikButton>
-
-<h4>Buttons with icons and images</h4>
-
-<TelerikButton>
-    <span class="netherlands-flag"></span>Image
-</TelerikButton>
-<TelerikButton Class="snowboarding">
-    <img src="https://demos.telerik.com/kendo-ui/content/shared/icons/sports/snowboarding.png" alt=""/>Image
-</TelerikButton>
-
-<h4>Disabled Button</h4>
-<TelerikButton Enabled="false">Disabled Button</TelerikButton>
+<TelerikRootComponent>
+    <div>
+        <TelerikLoaderContainer OverlayThemeColor="light" ThemeColor="primary" Visible="@IsLoading" LoaderType="@LoaderType.InfiniteSpinner" />
+        <TelerikListView Data="@ListViewData.Pwned" Width="100%" Pageable="false">
+           
+            <Template>
+                <TestCard ItemViewModel=@context/>
+            </Template>
+           
+        </TelerikListView>
+    </div>
+</TelerikRootComponent>
 
 @code {
-    string? thankYouString;
 
-    protected void MyClickHandler()
+    private bool IsLoading { get; set; }
+
+    protected async override void OnInitialized()
     {
-        thankYouString = string.Format("Thank you for clicking me at {0:HH:mm:ss} on {0:dd MMM yy}. Now you can write front-end with C#, yay!", DateTime.Now);
-        StateHasChanged();
+        IsLoading = true;
+        base.OnInitialized();
+
+        await ListViewData.OnInitailise();
+        IsLoading = false;
+
+        await InvokeAsync(StateHasChanged);
+       
     }
+   
 }
 
-<style>
-    .red-text {
-        color: red;
-    }
 
-    .netherlands-flag {
-        background-image: url("https://demos.telerik.com/kendo-ui/content/shared/styles/flags.png");
-        background-position: 0 -64px;
-        vertical-align: middle;
-        height: 16px;
-        width: 16px;
-        display: inline-block;
-    }
-
-    .snowboarding img {
-        width: 16px;
-        height: 16px;
-        vertical-align: text-bottom;
-    }
-</style>

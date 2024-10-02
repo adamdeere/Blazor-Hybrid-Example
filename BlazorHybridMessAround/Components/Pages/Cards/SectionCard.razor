@@ -1,0 +1,129 @@
+﻿@using BlazorHybridMessAround.ViewModels
+<TelerikCard Width="100%" Orientation="CardOrientation.Horizontal">
+    <CardHeader>
+        <TelerikStackLayout Orientation="StackLayoutOrientation.Horizontal">
+            <div style="font-size:1.3em; color:var(--color-primary);">@ItemViewModel.Sequence.</div>
+            <img src="@ItemViewModel.ImageSource" style="width: 8vw;" alt="" />
+        </TelerikStackLayout>
+    </CardHeader>
+    <CardBody>
+        <div @onclick="CardClicked">
+            <TelerikLoaderContainer OverlayThemeColor="light" ThemeColor="primary" Visible="@Loading" LoaderType="@LoaderType.InfiniteSpinner" />
+            <div style="font-size:1.3em;">@ItemViewModel.Name</div>
+            <div style="color:var(--color-secondary); word-wrap:normal;">@((MarkupString)ItemViewModel.Description.Replace("\r\n", "<br />"))</div>
+        </div>
+    </CardBody>
+    <CardFooter Class="itemFooterClass">
+        @if (ItemViewModel.ShowContextMenu)
+        {
+            <div style="margin-bottom:2vh">
+                <img @onclick="ContextButtonClicked" src="./images/more_vert.svg" style="width: 10vw;" alt="" />
+            </div>
+        }
+    </CardFooter>
+</TelerikCard>
+<TelerikContextMenu @ref="@ContextMenu" Data="@MenuItems" Selector=".target" OnClick="@((MenuItem item) => OnItemClick(item))">
+</TelerikContextMenu>
+<style>
+    .itemFooterClass {
+        width: 12vw;
+        padding-right: 2vw;
+    }
+
+    .cardHidden {
+        display: none;
+    }
+
+    .cardShow {
+    }
+</style>
+@code {
+    [Parameter]
+    public SectionViewModel ItemViewModel { get; set; }
+    [Parameter]
+    public bool DisableClick { get; set; }
+
+    public class MenuItem
+    {
+        public string Text { get; set; }
+        public bool Disabled { get; set; }
+        public bool Separator { get; set; }
+        public object Icon { get; set; }
+        public IEnumerable<MenuItem> Items { get; set; }
+        public Action Action { get; set; }
+    }
+
+    public bool Loading { get; set; }
+    public TelerikContextMenu<MenuItem> ContextMenu { get; set; }
+    public List<MenuItem> MenuItems { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ItemViewModel.Card = this;
+
+        RefreshContextMenu();
+
+        base.OnInitialized();
+    }
+
+    public void ShowContextMenu(MouseEventArgs e, bool isSpecial)
+    {
+        InvokeAsync(() =>
+        {
+            ContextMenu.ShowAsync(e.ClientX, e.ClientY);
+        });
+    }
+
+    private void OnItemClick(MenuItem item)
+    {
+        InvokeAsync(() =>
+        {
+            ContextMenu.HideAsync();
+        });
+        // //is this needed?
+        // switch(item.Text)
+        // {
+        //     default:
+        //         break;
+        // }
+    }
+
+    private void CardClicked(MouseEventArgs e)
+    {
+        if (DisableClick)
+        {
+            return;
+        }
+
+        ItemViewModel.OnCardClick(e);
+    }
+
+    private void ContextButtonClicked(MouseEventArgs e)
+    {
+        ShowContextMenu(e, false);
+    }
+
+    public void RefreshContextMenu()
+    {
+        List<MenuItem> newItems = [];
+
+        InvokeAsync(() =>
+        {
+            MenuItems = newItems;
+        });
+    }
+
+    public void SetLoading(bool loading)
+    {
+        InvokeAsync(() =>
+        {
+            Loading = loading;
+            StateHasChanged();
+        });
+    }
+
+    public void InvokeStateHasChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+}

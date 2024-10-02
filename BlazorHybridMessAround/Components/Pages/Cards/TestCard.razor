@@ -1,0 +1,15 @@
+﻿@using BlazorHybridMessAround.Models
+<div>
+    <div class="k-card">
+        <div class="k-card-body">
+            <img src="@ItemViewModel.LogoPath" style="width: 8vw;" alt="" />
+            <h4 class="k-card-title">Title: @ItemViewModel.Title</h4>
+          
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public PwnedModel ItemViewModel { get; set; }
+}

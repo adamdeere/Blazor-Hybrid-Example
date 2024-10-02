@@ -1,5 +1,6 @@
 ﻿using BlazorHybridMessAround.Components.Views;
 using BlazorHybridMessAround.Services;
+using BlazorHybridMessAround.ViewModel;
 using BlazorHybridMessAround.ViewModels;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
@@ -29,10 +30,14 @@ namespace BlazorHybridMessAround
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
+
             builder.Services.AddSingleton<NavigationService>();
+            builder.Services.AddSingleton<HttpDataService>();
 
             builder.Services.AddSingleton<LoginView>();
             builder.Services.AddSingleton<LoginViewModel>();
+
+            builder.Services.AddSingleton<PwnedViewModel>();
             return builder.Build();
         }
     }
