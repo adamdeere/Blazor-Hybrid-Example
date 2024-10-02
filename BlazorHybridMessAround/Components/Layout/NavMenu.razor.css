@@ -1,14 +1,15 @@
-.header-block{
-    display:block;
+.header-block {
+    display: block;
 }
-.header-text{
-    color:white;
-    float:left;
+
+.header-text {
+    color: white;
+    float: left;
 }
 
 .logo {
-    height:80px;
-    margin:auto;
+    height: 80px;
+    margin: auto;
 }
 
 .navbar-toggler {

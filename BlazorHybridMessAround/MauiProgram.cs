@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BlazorHybridMessAround.Services;
+using Microsoft.Extensions.Logging;
 
 namespace BlazorHybridMessAround
 {
@@ -20,9 +21,9 @@ namespace BlazorHybridMessAround
 
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<NavigationService>();
             return builder.Build();
         }
     }

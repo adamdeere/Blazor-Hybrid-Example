@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BlazorHybridMessAround.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:BlazorHybridMessAround.Components.Views"
+    Shell.TabBarIsVisible="False"
+    Shell.FlyoutBehavior="Flyout">
+
+
+    <FlyoutItem Title="Home"
+                Icon="dotnet_bot.png">
+       
+        <Tab Title="Home"
+             x:Name="HomeTab"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Home}" />
+        </Tab>
+        <Tab Title="Cats ">
+            <ShellContent ContentTemplate="{DataTemplate views:CatsView}" />
+        </Tab>
+
+    </FlyoutItem>
+
+    <FlyoutItem Title="Items"
+        Icon="dotnet_bot.png">
+        <Tab Title="Items">
+            <ShellContent ContentTemplate="{DataTemplate views:Items}" />
+        </Tab>
+
+    </FlyoutItem>
+</Shell>
