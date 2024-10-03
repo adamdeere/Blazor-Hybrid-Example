@@ -1,8 +1,8 @@
 namespace BlazorHybridMessAround.Components.Views;
 
-public partial class Items : ContentPage
+public partial class HomePage : ContentPage
 {
-    public Items()
+    public HomePage()
     {
         InitializeComponent();
     }

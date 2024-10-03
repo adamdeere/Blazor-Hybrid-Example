@@ -72,49 +72,46 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Components\Views\HomeView.xaml.cs">
-        <DependentUpon>HomeView.xaml</DependentUpon>
+      <Compile Update="Components\Views\HomePage.xaml.cs">
+        <DependentUpon>HomePage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Components\Views\LoginPage.xaml.cs">
+        <DependentUpon>LoginPage.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <MauiXaml Update="Components\Views\DogsView.xaml">
+      <MauiXaml Update="Components\Views\GoT\BooksPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Components\Views\LoginView.xaml">
+      <MauiXaml Update="Components\Views\GoT\CharactersPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Components\Views\MonkeysView.xaml">
+      <MauiXaml Update="Components\Views\GoT\GotLandingPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Views\GoT\HousesPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Views\LoginPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Views\Swift\TasksPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Controls\FlyoutFooter.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Controls\FlyoutHeader.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Shells\AppShell.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Components\Views\CatsView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
       <MauiXaml Update="Components\Views\DetailsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Components\Views\HomeView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Components\Views\Items.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Shells\TestShell.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\CatsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\DetailsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\DogsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\MainPage.xaml">
+      <MauiXaml Update="Components\Views\HomePage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
     </ItemGroup>

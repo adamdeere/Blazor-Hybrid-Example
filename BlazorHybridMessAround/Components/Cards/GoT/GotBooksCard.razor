@@ -1,0 +1,45 @@
+﻿@using BlazorHybridMessAround.Models.GoT
+
+@if (BooksModel != null)
+{
+    <TelerikCard Width="100%">
+                <CardHeader Class="k-hbox">
+                    <div>
+                        <CardTitle>
+                          @BooksModel.Name
+                        </CardTitle>
+                        <CardSubTitle>
+                            @BooksModel.Isbn
+                        </CardSubTitle>
+                    </div>
+                </CardHeader>
+                <CardBody>
+
+                    <div>
+                   
+                        Authors
+                        @foreach (var item in BooksModel.Authors)
+                        {
+                            <div>@item</div>
+                        }
+
+                    </div>
+                    <div>
+                        Release date: @BooksModel.Released
+                    </div>
+                    
+                   
+                </CardBody>
+                <CardActions Class="justify-space-between">
+                    
+                  
+                </CardActions>
+            
+            </TelerikCard>
+}
+
+
+@code {
+    [Parameter]
+    public GotBooks? BooksModel { get; set; }
+}

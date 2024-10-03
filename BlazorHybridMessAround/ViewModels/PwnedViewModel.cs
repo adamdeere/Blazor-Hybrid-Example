@@ -16,6 +16,7 @@ public partial class PwnedViewModel(HttpDataService ds) : ObservableObject
     public async Task OnInitailise()
     {
         string address = "https://haveibeenpwned.com/api/v2/breaches";
+
         Pwned = await _dataService.GetListFromJson<PwnedModel>(address);
     }
 

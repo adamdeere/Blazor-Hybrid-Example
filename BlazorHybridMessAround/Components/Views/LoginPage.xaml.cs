@@ -2,10 +2,9 @@ using BlazorHybridMessAround.ViewModels;
 
 namespace BlazorHybridMessAround.Components.Views;
 
-
-public partial class DetailsPage : ContentPage
+public partial class LoginPage : ContentPage
 {
-    public DetailsPage(PwnedDataViewModel vm)
+	public LoginPage(LoginViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;

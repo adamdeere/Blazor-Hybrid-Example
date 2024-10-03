@@ -5,32 +5,95 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:BlazorHybridMessAround.Components.Views"
     Shell.TabBarIsVisible="False"
-    Shell.FlyoutBehavior="Flyout">
+    xmlns:controls="clr-namespace:BlazorHybridMessAround.Controls"
+    >
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+           TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                Value="#455A64" />
+            <Setter Property="Shell.ForegroundColor"
+                Value="White" />
+            <Setter Property="Shell.TitleColor"
+                Value="White" />
+            <Setter Property="Shell.DisabledColor"
+                Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                Value="#95FFFFFF" />
+        </Style>
+        <Style TargetType="ShellItem"
+           BasedOn="{StaticResource BaseStyle}" />
+        <Style x:Key="DomesticShell"
+           TargetType="Element"
+           BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                Value="#039BE6" />
+        </Style>
+        <Style x:Key="MonkeysShell"
+           TargetType="Element"
+           BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                Value="#689F39" />
+        </Style>
+        <Style x:Key="ElephantsShell"
+           TargetType="Element"
+           BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                Value="#ED3B3B" />
+        </Style>
+        <Style x:Key="BearsShell"
+           TargetType="Element"
+           BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                Value="#546DFE" />
+        </Style>
+        <Style x:Key="AboutShell"
+           TargetType="Element"
+           BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                Value="#96d1ff" />
+        </Style>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
 
     <ShellItem Route="LoginView" FlyoutItemIsVisible="False">
-        <ShellContent ContentTemplate="{DataTemplate views:LoginView}" />
+        <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
     </ShellItem>
 
     <FlyoutItem Title="Home"
-                Icon="dotnet_bot.png">
-       
+                Icon="dotnet_bot.png"
+                FlyoutDisplayOptions="AsMultipleItems">
+
         <Tab Title="Home"
              x:Name="HomeTab"
              Icon="dotnet_bot.png">
-            <ShellContent ContentTemplate="{DataTemplate views:HomeView}"
-                          Route="HomeView"/>
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}"
+                          Route="HomePage"/>
         </Tab>
-        <Tab Title="Cats ">
-            <ShellContent ContentTemplate="{DataTemplate views:CatsView}" />
+        <Tab Title="G.o.T"
+             Icon="warning.png">
+            <ShellContent ContentTemplate="{DataTemplate views:GotLandingPage}"
+               Route="GotLandingPage"/>
+        </Tab>
+        <Tab Title="Tasks"
+             Icon="checklist_primary.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Swift.TasksPage}"
+               Route="TasksPage"/>
         </Tab>
 
     </FlyoutItem>
 
-    <FlyoutItem Title="Items"
-        Icon="dotnet_bot.png">
-        <Tab Title="Items">
-            <ShellContent ContentTemplate="{DataTemplate views:Items}" />
-        </Tab>
 
-    </FlyoutItem>
+    <MenuItem Text="Help"
+           IconImageSource="help.png"
+           Command="{Binding HelpCommand}"
+           CommandParameter="https://docs.microsoft.com/dotnet/maui/fundamentals/shell" />
+
 </Shell>

@@ -1,0 +1,104 @@
+﻿@using BlazorHybridMessAround.Components.Views
+@using BlazorHybridMessAround.Models
+
+<style>
+    
+    .text-box-false {
+        background-color: red;
+        color: white;
+        padding: 4px 8px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .text-box-true {
+        background-color: green;
+        color: white;
+        padding: 4px 8px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .badge-seperator > span{
+        margin-top: 25px;
+    }
+</style>
+
+@if (PwnedViewModel != null)
+{
+    <TelerikCard Width="100%">
+                <CardHeader Class="k-hbox">
+                    <div class="k-rounded-full k-avatar avatar-size">
+                        <div class="k-avatar-image ng-star-inserted" style="background-image: url(@PwnedViewModel.LogoPath);"></div>
+                    </div>
+                    <div>
+                        <CardTitle>
+                            @PwnedViewModel.Name
+                        </CardTitle>
+                        <CardSubTitle>
+                            Pwned count: @PwnedViewModel.PwnCount
+                        </CardSubTitle>
+                    </div>
+                </CardHeader>
+                <CardBody>
+                    <div>
+                         Breach date: @PwnedViewModel.BreachDate
+                    </div>
+                    <div>
+                        Added date: @PwnedViewModel.AddedDate
+                    </div>
+                    <div>
+                         Modified date: @PwnedViewModel.ModifiedDate
+                    </div>
+
+                    <div>
+                       
+                        <div class="badge-seperator">
+                            <span class="@GetColour(PwnedViewModel.IsVerified)">Verified</span>
+                            <span class="@GetColour(PwnedViewModel.IsFabricated)">Fabricated</span>
+                            <span class="@GetColour(PwnedViewModel.IsSensitive)">Sensitive</span>
+                            <span class="@GetColour(PwnedViewModel.IsRetired)">Retired</span>
+                            <span class="@GetColour(PwnedViewModel.IsSpamList)">SpamList</span>
+                            <span class="@GetColour(PwnedViewModel.IsMalware)">Malware</span>
+                            <span class="@GetColour(PwnedViewModel.IsSubscriptionFree)">Subscription Free</span>
+                  
+                        </div>
+                    </div>
+                </CardBody>
+                <CardActions Class="justify-space-between">
+                    
+                    <TelerikButton OnClick="@MyClickHandler">Click me!
+
+                    </TelerikButton>
+                  
+                </CardActions>
+            
+            </TelerikCard>
+}
+
+
+@code {
+    [Parameter]
+    public PwnedModel? PwnedViewModel { get; set; }
+   
+    protected async void MyClickHandler()
+    {
+        if (PwnedViewModel != null)
+        {
+            var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "PwnedViewModel", PwnedViewModel }
+            };
+            await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", navigationParameter);
+        }
+
+    }
+
+    private string GetColour(bool isTrue)
+    {
+        if (!isTrue)
+        {
+            return "text-box-false";
+        }
+        return "text-box-true";
+    }
+}

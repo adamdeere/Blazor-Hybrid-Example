@@ -1,20 +1,15 @@
-﻿@page "/"
-@using BlazorHybridMessAround.Components.Cards
-@using BlazorHybridMessAround.Models
-@using BlazorHybridMessAround.Services
-@using BlazorHybridMessAround.ViewModel
-@using BlazorHybridMessAround.ViewModels
-@using System.Collections.ObjectModel
+﻿@using BlazorHybridMessAround.Components.Cards.GoT
+@using BlazorHybridMessAround.ViewModels.GoT
 
-@inject PwnedViewModel ListViewData;
+@inject GotBooksViewModel GotBooksData;
 
 <TelerikRootComponent>
     <div>
         <TelerikLoaderContainer OverlayThemeColor="light" ThemeColor="primary" Visible="@IsLoading" LoaderType="@LoaderType.InfiniteSpinner" />
-        <TelerikListView Data="@ListViewData.Pwned" Width="100%" Pageable="false">
+        <TelerikListView Data="@GotBooksData.Books" Width="100%" Pageable="false">
            
             <Template>
-                <PwnedCard PwnedViewModel=@context/>
+                <GotBooksCard BooksModel=@context />
             </Template>
            
         </TelerikListView>
@@ -22,7 +17,6 @@
 </TelerikRootComponent>
 
 @code {
-
     private bool IsLoading { get; set; }
 
     protected async override void OnInitialized()
@@ -30,12 +24,10 @@
         IsLoading = true;
         base.OnInitialized();
 
-        await ListViewData.OnInitailise();
+        await GotBooksData.OnInitailise();
         IsLoading = false;
 
         await InvokeAsync(StateHasChanged);
-       
+
     }
 }
-
-

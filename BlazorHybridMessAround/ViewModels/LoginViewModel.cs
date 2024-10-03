@@ -13,8 +13,8 @@ public partial class LoginViewModel : ObservableObject
        _navigationService = service;
     }
     [RelayCommand]
-    private async Task LoginClick()
+    private async Task LoginClick(string lol)
     {
-        await _navigationService.GoToPage<HomeView>();
+        await _navigationService.GoToHomePage();
     }
 }
