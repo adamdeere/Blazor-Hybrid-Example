@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlazorHybridMessAround.Components.Views.LoginPage"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             Title="LoginView"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Padding="10" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+        <Frame BorderColor="{StaticResource Secondary}"
+             CornerRadius="10"
+             HasShadow="True"
+             Margin="0,-20,0,0"
+             ZIndex="0"
+             Padding="8">
+            <Frame.Shadow>
+                <Shadow Brush="Black"
+                         Offset="20,20"
+                         Radius="10"
+                         Opacity="0.9" />
+            </Frame.Shadow>
+            <VerticalStackLayout 
+                          Padding="10" 
+                          VerticalOptions="CenterAndExpand" 
+                          HorizontalOptions="CenterAndExpand" 
+                          BackgroundColor="{StaticResource White}">
+                <toolkit:DockLayout HorizontalOptions="Fill">
+                    <ImageButton toolkit:DockLayout.DockPosition="Right"
+                              x:Name="settings" 
+                              Source="settings_primary.png"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              HorizontalOptions="End"
+                              VerticalOptions="Start"
+                             />
+                    <Image toolkit:DockLayout.DockPosition="Top"
+                        Source="warehouse.png"
+                        SemanticProperties.Description="Swift Logo"
+                        HeightRequest="60"
+                        HorizontalOptions="Center" 
+                        Margin="30,0,0,0"/>
+                </toolkit:DockLayout>
+                <Label x:Name="AppVersion" 
+                    Text="" 
+                    FontSize="10"
+                    Margin="0,20,0,0"/>
+                <BoxView Color="{StaticResource Secondary}"
+                             Margin="0,0,0,20"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
+                <telerik:RadDataForm x:Name="DataForm"
+                                  AutoGenerateItems="False"
+                                  IsValidationSummaryVisible="False"
+                                  ValidationSummaryImageSource="warning_warning.png"
+                                  ValidationMode="Explicit"
+                                  CommitMode="Explicit">
+                   
+                    <telerik:DataFormRadEntryEditor PropertyName="Username" HeaderText="Username" x:Name="UsernameEntry"/>
+                    <telerik:DataFormRadEntryPasswordEditor PropertyName="Password" HeaderText="Password" x:Name="PasswordEntry"/>
+                </telerik:RadDataForm>
+                <Button Margin="0,20,0,0"
+                     x:Name="LoginButton"
+                     Text="Login"
+                     Command="{Binding LoginClickCommand}"
+                     CommandParameter="yes"
+                     VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="FillAndExpand"
+                     />
+                <telerik:RadLinearProgressBar x:Name="UpgradeProgress"
+                           Margin="0, 10, 0, 0"
+                           Minimum="0"
+                           Maximum="100"/>
+                <Label x:Name="UpgradeText" 
+                    Text="Downloading Upgrade..." 
+                    FontSize="10"
+                    Margin="0,0,0,0"/>
+               
+                <telerik:RadBusyIndicator Margin="0,20,0,0"
+                                         x:Name="BusyIndicator"
+                                         AnimationContentHeightRequest="40"
+                                         AnimationContentWidthRequest="40"
+                                         AnimationContentColor="{StaticResource Primary}"
+                                         AnimationType="Animation2"
+                                         AutomationId="busyIndicator"
+                                         IsBusy="False"
+                                         IsVisible="False"/>
+                <Label x:Name="LoginError"
+                             IsVisible="false"/>
+                <BoxView Color="{StaticResource Secondary}"
+                             Margin="0,20,0,0"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,5 +1,41 @@
 ﻿@page "/"
+@using BlazorHybridMessAround.Components.Cards
+@using BlazorHybridMessAround.Models
+@using BlazorHybridMessAround.Services
+@using BlazorHybridMessAround.ViewModel
+@using BlazorHybridMessAround.ViewModels
+@using System.Collections.ObjectModel
 
-<h1>Hello, world!</h1>
+@inject PwnedViewModel ListViewData;
 
-Welcome to your new app.
+<TelerikRootComponent>
+    <div>
+        <TelerikLoaderContainer OverlayThemeColor="light" ThemeColor="primary" Visible="@IsLoading" LoaderType="@LoaderType.InfiniteSpinner" />
+        <TelerikListView Data="@ListViewData.Pwned" Width="100%" Pageable="false">
+           
+            <Template>
+                <PwnedCard PwnedViewModel=@context/>
+            </Template>
+           
+        </TelerikListView>
+    </div>
+</TelerikRootComponent>
+
+@code {
+
+    private bool IsLoading { get; set; }
+
+    protected async override void OnInitialized()
+    {
+        IsLoading = true;
+        base.OnInitialized();
+
+        await ListViewData.OnInitailise();
+        IsLoading = false;
+
+        await InvokeAsync(StateHasChanged);
+       
+    }
+}
+
+

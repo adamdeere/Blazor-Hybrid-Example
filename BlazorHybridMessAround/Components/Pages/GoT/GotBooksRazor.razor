@@ -1,0 +1,33 @@
+﻿@using BlazorHybridMessAround.Components.Cards.GoT
+@using BlazorHybridMessAround.ViewModels.GoT
+
+@inject GotBooksViewModel GotBooksData;
+
+<TelerikRootComponent>
+    <div>
+        <TelerikLoaderContainer OverlayThemeColor="light" ThemeColor="primary" Visible="@IsLoading" LoaderType="@LoaderType.InfiniteSpinner" />
+        <TelerikListView Data="@GotBooksData.Books" Width="100%" Pageable="false">
+           
+            <Template>
+                <GotBooksCard BooksModel=@context />
+            </Template>
+           
+        </TelerikListView>
+    </div>
+</TelerikRootComponent>
+
+@code {
+    private bool IsLoading { get; set; }
+
+    protected async override void OnInitialized()
+    {
+        IsLoading = true;
+        base.OnInitialized();
+
+        await GotBooksData.OnInitailise();
+        IsLoading = false;
+
+        await InvokeAsync(StateHasChanged);
+
+    }
+}
