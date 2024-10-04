@@ -7,11 +7,10 @@ namespace BlazorHybridMessAround.ViewModels;
 
 public partial class KingsLandingViewModel(NavigationService service) : ObservableObject
 {
-    private readonly NavigationService _navigationService = service;
-
     [RelayCommand]
-    private async Task GoToBooks(string y)
+    private async Task GoToBooks(Type type)
     {
-        await _navigationService.GoToPage(y);
+        var t = type.GetType();
+        await service.GoToPage(type.Name);
     }
 }

@@ -1,4 +1,6 @@
 ﻿@using BlazorHybridMessAround.Components.Cards.GoT
+@using BlazorHybridMessAround.Components.Views.GoT
+@using BlazorHybridMessAround.Models.GoT
 @using BlazorHybridMessAround.ViewModels.GoT
 
 @inject GotBooksViewModel GotBooksData;
@@ -6,10 +8,16 @@
 <TelerikRootComponent>
     <div>
         <TelerikLoaderContainer OverlayThemeColor="light" ThemeColor="primary" Visible="@IsLoading" LoaderType="@LoaderType.InfiniteSpinner" />
-        <TelerikListView Data="@GotBooksData.Books" Width="100%" Pageable="false">
-           
+        <TelerikListView Data="@GotBooksData.Books" 
+                         Width="100%" 
+                         Pageable="false">
+            <HeaderTemplate>
+                Top European destinations
+            </HeaderTemplate>
             <Template>
-                <GotBooksCard BooksModel=@context />
+                <div @onclick="@( _ => SelectItem(context) )">
+                    <GotBooksCard BooksModel=@context  />
+                </div>
             </Template>
            
         </TelerikListView>
@@ -18,6 +26,16 @@
 
 @code {
     private bool IsLoading { get; set; }
+
+    private async void SelectItem(GotBooks BookItem)
+    {
+        var navigationParameter = new ShellNavigationQueryParameters
+        {
+            { "BookItem", BookItem }
+        };
+
+        await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}", navigationParameter);
+    }
 
     protected async override void OnInitialized()
     {

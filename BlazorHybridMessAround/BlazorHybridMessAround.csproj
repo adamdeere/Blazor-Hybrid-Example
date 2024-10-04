@@ -82,6 +82,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="Components\Views\GoT\BookDetailPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Components\Views\GoT\BooksPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

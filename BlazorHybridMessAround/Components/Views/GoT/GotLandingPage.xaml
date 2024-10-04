@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BlazorHybridMessAround.Components.Views.GotLandingPage"
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
-             Title="Game of thrones Landing Page">
+             Title="Game of thrones Landing Page"
+             xmlns:views="clr-namespace:BlazorHybridMessAround.Components.Views">
     <VerticalStackLayout>
         <Label 
             Text="Welcome to Kings Landing!"
@@ -15,20 +16,20 @@
                            BackgroundColor="{StaticResource Primary}"
                            TextColor="White"
                            Command="{Binding GoToBooksCommand}"
-                           CommandParameter="BooksPage"/>
+                           CommandParameter="{Type views:GoT.BooksPage}"/>
 
         <telerik:RadButton x:Name="CharactersButton"
                            Text="Characters"
                            BackgroundColor="{StaticResource Primary}"
                            TextColor="White"
                            Command="{Binding GoToBooksCommand}"
-                           CommandParameter="CharactersPage"/>
+                           CommandParameter="{Type views:GoT.CharactersPage}"/>
 
         <telerik:RadButton x:Name="HousesButton"
                            Text="Houses"
                            BackgroundColor="{StaticResource Primary}"
                            TextColor="White"
                            Command="{Binding GoToBooksCommand}"
-                           CommandParameter="HousesPage"/>
+                           CommandParameter="{Type views:GoT.HousesPage}"/>
     </VerticalStackLayout>
 </ContentPage>

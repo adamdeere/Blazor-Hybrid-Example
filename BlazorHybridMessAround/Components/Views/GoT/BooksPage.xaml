@@ -5,14 +5,27 @@
              Title="G.o.T Books Page"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:razorPages="clr-namespace:BlazorHybridMessAround.Components.Pages.GoT">
 
-    <BlazorWebView HostPage="wwwroot/index.html">
-
-        <BlazorWebView.RootComponents>
-            <RootComponent Selector="#app" ComponentType="{x:Type razorPages:GotBooksRazor}" />
-        </BlazorWebView.RootComponents>
-    </BlazorWebView>
-
+    <Grid RowDefinitions="*, auto">
+        
+   
+        <BlazorWebView HostPage="wwwroot/index.html"
+                       >
+            
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" 
+                               ComponentType="{x:Type razorPages:GotBooksRazor}"
+                               />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+        
+        <telerik:RadButton x:Name="HousesButton"
+                    Text="Houses"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Grid.Row="1"/>
+    </Grid>
 
 </ContentPage>
