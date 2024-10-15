@@ -2,11 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExperimentalShell.Views.MainView"
-             xmlns:pages="clr-namespace:ExperimentalShell.Components.Pages"
+             xmlns:views="clr-namespace:ExperimentalShell.Views.Dogs"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              Title="MainView">
-    <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
-        <BlazorWebView.RootComponents>
-            <RootComponent Selector="#app" ComponentType="{x:Type pages:Home}" />
-        </BlazorWebView.RootComponents>
-    </BlazorWebView>
+    <VerticalStackLayout>
+        <Label 
+        Text="Select an animal"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+        <telerik:RadButton x:Name="DogsButton"
+                       Text="Doggo's"
+                       BackgroundColor="{StaticResource Primary}"
+                       TextColor="White"
+                       Command="{Binding ViewAnimalCommand}"
+                       CommandParameter="{Type views:DogsView}"/>
+
+        
+    </VerticalStackLayout>
 </ContentPage>

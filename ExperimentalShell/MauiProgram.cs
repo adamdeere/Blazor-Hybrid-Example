@@ -28,9 +28,13 @@ namespace ExperimentalShell
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<NavigationService>();
+            builder.Services.AddSingleton<HttpService>();
 
             builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<LoginViewModel>();
+
+            builder.Services.AddSingleton<MainView>();
+            builder.Services.AddSingleton<MainViewModel>();
 
             return builder.Build();
         }

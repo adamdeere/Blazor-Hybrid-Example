@@ -75,7 +75,7 @@
              x:Name="HomeTab"
              Icon="dotnet_bot.png">
             <ShellContent ContentTemplate="{DataTemplate views:MainView}"
-                          Route="MainPage"
+                          Route="MainView"
                           />
         </Tab>
         <!--<Tab Title="G.o.T"

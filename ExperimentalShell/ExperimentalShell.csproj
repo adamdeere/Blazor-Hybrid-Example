@@ -64,12 +64,21 @@
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.91" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.91" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Net.Http.Headers" Version="8.0.10" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Telerik.UI.for.Blazor" Version="6.2.0" />
         <PackageReference Include="Telerik.UI.for.Maui" Version="7.1.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Components\Cards\" />
       <Folder Include="Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Dogs\DogsView.xaml.cs">
+        <DependentUpon>DogsView.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -89,6 +98,9 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Resources\Styles\TelerikStyles.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Dogs\DogsView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\LoginView.xaml">

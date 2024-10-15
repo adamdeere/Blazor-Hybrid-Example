@@ -1,3 +1,5 @@
+using ExperimentalShell.Views;
+using ExperimentalShell.Views.Dogs;
 using System.Windows.Input;
 
 namespace ExperimentalShell;
@@ -9,6 +11,7 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+        Routing.RegisterRoute(nameof(MainView), typeof(MainView));
+        Routing.RegisterRoute(nameof(DogsView), typeof(DogsView));
     }
 }

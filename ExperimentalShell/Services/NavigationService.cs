@@ -1,10 +1,12 @@
-﻿namespace ExperimentalShell.Services;
+﻿using ExperimentalShell.Views;
+
+namespace ExperimentalShell.Services;
 
 public class NavigationService
 {
     public async Task GoToHomePage()
     {
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(MainView)}");
     }
 
     public async Task GoToPage<T>()
