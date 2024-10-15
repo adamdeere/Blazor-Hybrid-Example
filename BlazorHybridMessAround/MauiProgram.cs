@@ -49,6 +49,9 @@ namespace BlazorHybridMessAround
          
             builder.Services.AddTransient<GotBooksViewModel>();
 
+            builder.Services.AddTransient<CharactersPage>();
+            builder.Services.AddTransient<CharacterViewModel>();
+
             builder.Services.AddTransient<BookDetailPage>();
             builder.Services.AddTransient<BookDetailViewModel>();
             return builder.Build();

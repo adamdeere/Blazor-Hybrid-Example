@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BlazorHybridMessAround.Components.Cards
+@using BlazorHybridMessAround.Components.Views
 @using BlazorHybridMessAround.Models
 @using BlazorHybridMessAround.Services
 @using BlazorHybridMessAround.ViewModel
@@ -14,7 +15,10 @@
         <TelerikListView Data="@ListViewData.Pwned" Width="100%" Pageable="false">
            
             <Template>
-                <PwnedCard PwnedViewModel=@context/>
+                <div @onclick="@( _ => SelectItem(context) )">
+                    <PwnedCard PwnedViewModel=@context />
+                </div>
+              
             </Template>
            
         </TelerikListView>
@@ -32,9 +36,18 @@
 
         await ListViewData.OnInitailise();
         IsLoading = false;
+      
+        await InvokeAsync(StateHasChanged);
 
-       await InvokeAsync(StateHasChanged);
-       
+    }
+
+    private async void SelectItem(PwnedModel PwnedViewModel)
+    {
+        var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "PwnedViewModel", PwnedViewModel }
+            };
+        await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", navigationParameter);
     }
 }
 

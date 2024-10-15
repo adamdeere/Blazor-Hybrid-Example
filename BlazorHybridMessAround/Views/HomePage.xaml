@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BlazorHybridMessAround.Components.Views.HomePage"
              Title="Home"
-             xmlns:razorPages="clr-namespace:BlazorHybridMessAround.Components.Pages">
+             xmlns:razorPages="clr-namespace:BlazorHybridMessAround.Components.Pages"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             >
+
     <BlazorWebView HostPage="wwwroot/index.html">
         <BlazorWebView.RootComponents>
-            <RootComponent Selector="#app" ComponentType="{x:Type razorPages:Home}" />
+            <RootComponent Selector="#app" 
+            ComponentType="{x:Type razorPages:Home}" />
         </BlazorWebView.RootComponents>
     </BlazorWebView>
+
+
 </ContentPage>
