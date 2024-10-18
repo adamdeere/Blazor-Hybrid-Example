@@ -11,7 +11,7 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-        Routing.RegisterRoute(nameof(MainView), typeof(MainView));
+        Routing.RegisterRoute(nameof(TasksBlazorView), typeof(TasksBlazorView));
         Routing.RegisterRoute(nameof(DogsView), typeof(DogsView));
     }
 }

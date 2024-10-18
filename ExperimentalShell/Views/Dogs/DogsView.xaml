@@ -2,11 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExperimentalShell.Views.Dogs.DogsView"
-             Title="NewPage1">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Doggos!!!!!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="NewPage1"
+             xmlns:razorPages="clr-namespace:ExperimentalShell.Components.Pages">
+    <BlazorWebView x:Name="BlazorWebView" 
+                HostPage="wwwroot/index.html">
+        <BlazorWebView.RootComponents>
+            <RootComponent x:Name="BlazorWebViewRootComponent" 
+                        Selector="#app" 
+                        ComponentType="{x:Type razorPages:Counter}" />
+        </BlazorWebView.RootComponents>
+    </BlazorWebView>
 </ContentPage>

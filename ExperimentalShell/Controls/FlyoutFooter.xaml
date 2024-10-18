@@ -4,10 +4,18 @@
              x:Class="ExperimentalShell.Controls.FlyoutFooter"
              >
     <StackLayout>
-        <Label Text="Xaminals"
-               TextColor="Black"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" />
+        <VerticalStackLayout HeightRequest="100">
+            <Label FontSize="12"
+                   HorizontalOptions="Center"
+                   Text="Made By"
+                   TextColor="Gray"
+                   VerticalOptions="Center" />
+            
+            <Image Source="ims_logo.jpg" 
+                   WidthRequest="64"
+                   HeightRequest="64"
+                   x:Name="Logo"/>
+        </VerticalStackLayout>
 
     </StackLayout>
 </ContentView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExperimentalShell.Views.TasksBlazorView"
+             xmlns:razorPages="clr-namespace:ExperimentalShell.Components.Pages"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
+             Title="MainView">
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android">
+            <RefreshView x:Name="RefreshView" 
+                       windows:RefreshView.RefreshPullDirection="TopToBottom"
+                       Command="{Binding RefreshCommand}"
+                       IsRefreshing="{Binding IsRefreshing}">
+                <BlazorWebView x:Name="BlazorWebView" 
+                               HostPage="wwwroot/index.html">
+                    <BlazorWebView.RootComponents>
+                        <RootComponent x:Name="BlazorWebViewRootComponent" 
+                                       Selector="#app" 
+                                       ComponentType="{x:Type razorPages:TasksList}" />
+                    </BlazorWebView.RootComponents>
+                </BlazorWebView>
+            </RefreshView>
+        </On>
+        <On Platform="WinUI">
+            <BlazorWebView x:Name="BlazorWebViewWindows" 
+                           HostPage="wwwroot/index.html">
+                <BlazorWebView.RootComponents>
+                    <RootComponent x:Name="BlazorWebViewRootComponentWindows" 
+                                   Selector="#app" 
+                                   ComponentType="{x:Type razorPages:TasksList}" />
+                </BlazorWebView.RootComponents>
+            </BlazorWebView>
+        </On>
+    </OnPlatform>
+</ContentPage>

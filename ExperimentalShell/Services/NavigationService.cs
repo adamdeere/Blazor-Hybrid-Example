@@ -6,7 +6,7 @@ public class NavigationService
 {
     public async Task GoToHomePage()
     {
-        await Shell.Current.GoToAsync($"//{nameof(MainView)}");
+        await Shell.Current.GoToAsync($"//{nameof(TasksBlazorView)}");
     }
 
     public async Task GoToPage<T>()

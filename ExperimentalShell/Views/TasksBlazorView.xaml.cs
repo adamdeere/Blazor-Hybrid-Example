@@ -2,9 +2,9 @@ using ExperimentalShell.ViewModels;
 
 namespace ExperimentalShell.Views;
 
-public partial class MainView : ContentPage
+public partial class TasksBlazorView : ContentPage
 {
-	public MainView(MainViewModel vm)
+	public TasksBlazorView(TasksViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;
